@@ -34,9 +34,7 @@ jobs:
           node-version-file: '.nvmrc'
       
       - name: Install dependencies
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: install
+        run: yarn --prefer-offline
       
       - name: Build site
         run: yarn build
