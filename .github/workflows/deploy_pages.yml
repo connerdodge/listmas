@@ -37,19 +37,19 @@ jobs:
         uses: borales/actions-yarn@v4
         with:
           cmd: install
+      
+      - name: Build site
+        run: yarn build
         
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
           static_site_generator: "sveltekit"
-      
-      - name: Build site
-        run: yarn build
           
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.sveltekit/output'
+          path: 'build'
           
   deploy:
     needs: build-site
