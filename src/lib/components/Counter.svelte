@@ -38,7 +38,7 @@
 	</button>
 </div>
 
-<style>
+<style lang="postcss">
 	.counter {
 		display: flex;
 		border-top: 1px solid rgba(0, 0, 0, 0.1);
@@ -59,7 +59,7 @@
 	}
 
 	.counter button:hover {
-		background-color: var(--color-bg-1);
+		background-color: theme(colors.green.100);
 	}
 
 	svg {
