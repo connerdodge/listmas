@@ -1,5 +1,8 @@
-[![GPL-3.0 License][license-shield]][license-url]
 [![Svelte][Svelte.dev]][Svelte-url]
+[![Tailwind CSS][TailwindCSS]][Tailwind-url]
+[![Vite][Vite.dev]][Vite-url]
+[![Vitest][Vitest.dev]][Vitest-url]
+[![GPL-3.0 License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 # Listmas
@@ -61,9 +64,16 @@ Distributed under the GPL-3.0 license. See `LICENSE` for more information.
 
 
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[license-shield]: https://img.shields.io/github/license/connerdodge/listmas
+[license-shield]: https://img.shields.io/github/license/connerdodge/listmas?style=for-the-badge
 [license-url]: https://github.com/connerdodge/listmas/blob/main/LICENSE
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?logo=linkedin&colorB=555
+[linkedin-shield]: https://img.shields.io/badge/LinkedIn-0072b1?style=for-the-badge&logo=linkedin&color=0072b1
 [linkedin-url]: https://linkedin.com/in/conner-dodge
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?logo=svelte&logoColor=FF3E00
+[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
 [Svelte-url]: https://svelte.dev/
+[TailwindCSS]: https://img.shields.io/badge/TailwindCSS-4A4A55?style=for-the-badge&logo=tailwindcss&logoColor=06B6D4
+[Tailwind-url]: https://tailwindcss.com/
+[Vite.dev]: https://img.shields.io/badge/Vite-4A4A55?style=for-the-badge&logo=vite&logoColor=646CFF
+[Vite-url]: https://vite.dev/
+[Vitest.dev]: https://img.shields.io/badge/Vitest-4A4A55?style=for-the-badge&logo=vitest&logoColor=6E9F18
+[Vitest-url]: https://vitest.dev/
+
