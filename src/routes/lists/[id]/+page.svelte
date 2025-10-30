@@ -29,7 +29,8 @@
 	
 	onMount(() => {
 		// Load from localStorage (later we'll use a database)
-		const stored = localStorage.getItem(`list-${data.listId}`);
+		const key = `list-${data.listId}`;
+		const stored = localStorage.getItem(key);
 		
 		if (stored) {
 			listData = JSON.parse(stored);

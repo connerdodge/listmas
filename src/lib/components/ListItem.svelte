@@ -144,9 +144,8 @@
 	.item-header {
 		display: flex;
 		justify-content: space-between;
-		align-items: start;
+		align-items: center;
 		gap: 1rem;
-		margin-bottom: 0.75rem;
 	}
 	
 	.item-name {
@@ -299,6 +298,7 @@
 		color: #111827;
 		margin: 0;
 		display: -webkit-box;
+		line-clamp: 2;
 		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
 		overflow: hidden;
@@ -309,6 +309,7 @@
 		color: #6b7280;
 		margin: 0;
 		display: -webkit-box;
+		line-clamp: 2;
 		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
 		overflow: hidden;

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
 	import ListItem from '$lib/components/ListItem.svelte';
 	import Icon from '@iconify/svelte';
@@ -13,6 +14,8 @@
 		price?: string;
 	};
 	
+	const DRAFT_KEY = 'listmas-draft';
+	
 	let listTitle = $state('My Christmas Wishlist 2025');
 	let items = $state<GiftItem[]>([]);
 	let newItemName = $state('');
@@ -21,6 +24,29 @@
 	let newItemPrice = $state('');
 	let shareableLink = $state<string | null>(null);
 	let showShareModal = $state(false);
+	
+	// Load draft from localStorage on mount
+	onMount(() => {
+		const draft = localStorage.getItem(DRAFT_KEY);
+		if (draft) {
+			try {
+				const parsed = JSON.parse(draft);
+				listTitle = parsed.title || listTitle;
+				items = parsed.items || [];
+			} catch {
+				localStorage.removeItem(DRAFT_KEY);
+			}
+		}
+	});
+	
+	// Auto-save to localStorage whenever items or title change
+	$effect(() => {
+		const draft = {
+			title: listTitle,
+			items
+		};
+		localStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
+	});
 	
 	function addItem() {
 		if (!newItemName.trim()) return;
@@ -65,7 +91,11 @@
 		
 		// For now, save to localStorage (later we'll use a database)
 		const listId = crypto.randomUUID();
-		localStorage.setItem(`list-${listId}`, JSON.stringify(listData));
+		const key = `list-${listId}`;
+		localStorage.setItem(key, JSON.stringify(listData));
+		
+		// Clear the draft since it's now saved
+		localStorage.removeItem(DRAFT_KEY);
 		
 		// Generate shareable link
 		const baseUrl = window.location.origin;
@@ -184,14 +214,26 @@
 </div>
 
 {#if showShareModal}
-	<div class="modal-overlay" onclick={closeModal}>
-		<div class="modal" onclick={(e) => e.stopPropagation()}>
+	<!-- svelte-ignore a11y_click_events_have_key_events -->
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
+	<div 
+		class="modal-overlay" 
+		onclick={closeModal}
+	>
+		<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+		<div 
+			class="modal" 
+			onclick={(e) => e.stopPropagation()}
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="modal-title"
+		>
 			<div class="modal-header">
-				<h2 class="modal-title">
+				<h2 id="modal-title" class="modal-title">
 					<Icon icon="mdi:share-variant" width="28" height="28" />
 					List Saved & Ready to Share!
 				</h2>
-				<button onclick={closeModal} class="modal-close">
+				<button onclick={closeModal} class="modal-close" aria-label="Close modal">
 					<Icon icon="mdi:close" width="24" height="24" />
 				</button>
 			</div>
