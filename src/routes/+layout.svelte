@@ -1,13 +1,13 @@
 <script lang="ts">
 	import Header from './Header.svelte';
-  import Footer from './Footer.svelte';
+	import Footer from './Footer.svelte';
 	import '../app.css';
 	
-	let { children } = $props();
+	let { children, data } = $props();
 </script>
 
 <div class="app">
-	<Header />
+	<Header session={data.session} />
 
 	<main>
 		{@render children()}
